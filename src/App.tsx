@@ -1,6 +1,7 @@
 import React from "react"
-import {firestore} from "./firebase-setup/firebase"
-import {useCollectionData} from 'react-firebase-hooks/firestore'
+import {collection, query} from "firebase/firestore"
+import {useCollectionData} from "react-firebase-hooks/firestore"
+import { db } from "./firebase-setup/firebase"
 
 export interface EntryObject {
   rating: number
@@ -8,17 +9,15 @@ export interface EntryObject {
 
 export const App = () => {
 
-  // const collection = firestore.collection('entries');
-  // const query = collection.limit(25) as EntryObject[];
-
   const [data, loading, error] = useCollectionData<EntryObject>(
-    firestore.collection('entries') as any
+    query(collection(db, "entries"))
   );
+
   console.log(data, loading, error)
 
   return (
     <div>
-      {data?.map((ele: EntryObject) => {return <div>{ele.rating}</div>})}
+      {(data as EntryObject[])?.map((ele: EntryObject) => {return <div>{ele.rating}</div>})}
     </div>
   )
 }

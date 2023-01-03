@@ -7,28 +7,30 @@ import { entry } from "./firebase/firestore/types"
 
 export const App = () => {
 
-  const [entryData, loading, error, x] = useCollectionData<entry>(
+  const [entryData, loading, error] = useCollectionData<entry>(
     query(collection(db, "entries"), orderBy("createdAt", "asc")).withConverter(entryConverter)
   );
 
-  console.log(x)
+  console.log(loading)
 
   const addEntryDocument = async() => {
-    await addDoc(collection(db, "entries"), {createdAt: serverTimestamp(), rating: 4} as entry)
+    await addDoc(collection(db, "entries"), {createdAt: serverTimestamp(), rating: (Math.floor(Math.random()*10))} as entry)
   }
 
   const deleteEntryDocument = async() => {
-    await deleteDoc(doc(db, "entries", entryData![0].id ?? ""))
+    //Delete first element in collection
+    await deleteDoc(doc(db, "entries", entryData![0].id!))
   }
 
   return (
     <div className="w-full flex flex-col items-center gap-2">
       {loading && <div>LOADING</div>}
+      {error && <div>{JSON.stringify(error)}</div>}
       
       <button onClick={addEntryDocument}>Add record</button>
       <button onClick={deleteEntryDocument}>Delete top record</button>
 
-      {entryData?.map((ele: entry, idx: number) => {return <div className="flex flex-row items-center justify-center w-min gap-4 p-4 border border-2 border-black">
+      {entryData?.map((ele: entry, idx: number) => {return <div key={ele.id} className="flex flex-row items-center justify-center w-min gap-4 p-4 border border-2 border-black">
         <p>{idx + 1}</p>
         <p>{ele.id}</p>
         <p>{(ele.createdAt?.toDate().toString())}</p>

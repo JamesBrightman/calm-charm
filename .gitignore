@@ -115,9 +115,6 @@ dist
 # production
 /build
 
-# firebase env
-/src/firebase-setup/firebase.env
-
 # misc
 .DS_Store
 .env.local

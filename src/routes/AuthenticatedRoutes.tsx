@@ -6,5 +6,5 @@ export const AuthenticatedRoute = () => {
   const [user] = useAuthState(auth);
 
   if (!user) return <Navigate to="/auth/login" />;
-  return <Outlet></Outlet>;
+  return <Outlet/>;
 };

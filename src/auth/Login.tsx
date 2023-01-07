@@ -16,6 +16,6 @@ export const Login = () => {
 
     return (<div className="flex flex-col gap-4 items-center justify-center">
       <button onClick={signIn}>Sign In</button>
-      <button onClick={() => {signOut(auth)}}>Sign Out</button>
+      {/* <button onClick={() => {signOut(auth)}}>Sign Out</button> */}
     </div>)
 }

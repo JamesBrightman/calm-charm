@@ -3,9 +3,11 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase/firebaseInit";
 
 export const AuthenticatedRoute = () => {
-  const [user] = useAuthState(auth);
-  console.log(user)
+  const [user, loading] = useAuthState(auth);
+  console.log(user, loading)
 
-  if (!user) return <Navigate to="/auth/login" />;
-  return <Outlet/>;
+  return  (<>
+  {loading ? <div>{"Loading"}</div> : user ? <Outlet/> : <Navigate to="/auth/login" />}
+  </>
+  )
 };

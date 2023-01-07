@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomePage } from "./HomePage";
 import { Test } from "./Test";
-import { Authentication } from "./Authentication";
-import { AuthenticatedRoute } from "./routes/AuthenticatedRoutes";
+import { Authentication } from "./auth/Authentication";
+import { AuthenticatedRoute } from "./auth/routes/AuthenticatedRoutes";
 
 export const App = () => {
   return (

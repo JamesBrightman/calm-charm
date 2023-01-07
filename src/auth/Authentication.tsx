@@ -1,9 +1,10 @@
 import { Routes, Route } from "react-router-dom";
+import { Login } from "./Login";
 
 export const Authentication = () => {
   return (
     <Routes>
-      <Route path="login" element={<div>{"Login TODO"}</div>} />
+      <Route path="login" element={<Login/>} />
       <Route
         path="forgot-password"
         element={<div>{"Forgot Password TODO"}</div>}

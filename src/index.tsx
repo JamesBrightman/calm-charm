@@ -1,5 +1,6 @@
 import ReactDOM from 'react-dom/client'
 import "./styles/tailwind.css";
+import '@ionic/react/css/core.css';
 import { App } from './App';
 import * as serviceWorker from "./serviceWorker";
 import React from 'react';

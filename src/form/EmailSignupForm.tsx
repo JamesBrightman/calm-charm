@@ -22,7 +22,7 @@ export const EmailSignupForm: FC<EmailSignupFormProps> = ({ onSubmit }) => {
           Last name
           <input {...register("lastName")} className="border-2" />
         </label>
-        <input type={"submit"} className="border-2"/>
+        <input type={"submit"} />
       </form>
     </div>
   );

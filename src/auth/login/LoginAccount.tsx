@@ -1,4 +1,8 @@
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 import { FC } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
@@ -22,13 +26,12 @@ export const LoginAccount: FC<LoginAccountProps> = ({ toggleCreate }) => {
     });
   };
 
-  // const signInWithEmailPass = () => {
-  //   const provider = new EmailAuthProvider();
-  //   signInWithEmailAndPassword(auth, "email", "password").then((user) => {
-  //     console.log(user);
-  //     nav("/");
-  //   });
-  // };
+  const signInWithEmailPass = (email: string, password: string) => {
+    signInWithEmailAndPassword(auth, email, password).then((user) => {
+      console.log(user);
+      nav("/");
+    });
+  };
 
   return (
     <div className="h-screen flex flex-col flex-1 bg-blue-500">
@@ -53,7 +56,11 @@ export const LoginAccount: FC<LoginAccountProps> = ({ toggleCreate }) => {
         <div className="flex flex-col gap-4 bg-white items-center justify-center">
           <p className="text-2xl font-extrabold px-4 bg-white">Welcome back</p>
 
-          <EmailLoginForm />
+          <EmailLoginForm
+            onSubmit={(email: string, password: string) => {
+              signInWithEmailPass(email, password);
+            }}
+          />
 
           <IconButton
             buttonText="Sign in with Google"

@@ -1,7 +1,9 @@
 import { FC } from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import { IconButton } from "../components/IconButton";
 import { CalmFormProvider } from "./components/CalmFormProvider";
 import { TextInput } from "./components/TextInput";
+import {MdLogin} from "react-icons/md";
 
 export interface EmailLoginFormProps {
   onSubmit: (email: string, password: string) => void;
@@ -27,7 +29,7 @@ export const EmailLoginForm: FC<EmailLoginFormProps> = ({ onSubmit }) => {
       <CalmFormProvider
         methods={methods}
         onSubmit={submitEmailLogin}
-        className="flex flex-col gap-2 p-4"
+        className="flex flex-col gap-2 p-4 w-full"
       >
         <TextInput
           formName="email"
@@ -43,25 +45,9 @@ export const EmailLoginForm: FC<EmailLoginFormProps> = ({ onSubmit }) => {
           required
         />
 
-        {/* <label>
-          Email
-          <input
-            {...register("email")}
-            type="email"
-            required
-            className="border-2"
-          />
-        </label>
-        <label>
-          Password
-          <input
-            {...register("password")}
-            type="password"
-            required
-            className="border-2"
-          />
-        </label> */}
-        <input type={"submit"} className="border-2" />
+         <span className="w-full pb-0.5 bg-gray-300 mb-6 mt-2"></span>
+
+        <IconButton buttonText="Sign In" handleClick={() => {}} icon={<MdLogin className="w-8 h-8"/>} type="submit" className="text-lg font-bold bg-blue-600 text-white p-4 w-72"/>
       </CalmFormProvider>
     </div>
   );

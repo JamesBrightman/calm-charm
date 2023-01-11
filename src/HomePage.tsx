@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import {collection, query, orderBy, addDoc, serverTimestamp, deleteDoc, doc} from "firebase/firestore"
 import {useCollectionData} from "react-firebase-hooks/firestore"
 import {useAuthState} from "react-firebase-hooks/auth"

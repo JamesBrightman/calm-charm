@@ -35,6 +35,7 @@ export const LoginAccount: FC<LoginAccountProps> = ({ toggleCreate }) => {
 
   return (
     <div className="h-screen flex flex-col flex-1 bg-blue-500">
+        <p className="flex items-center justify-center pt-8 text-4xl font-bold text-white">{"[ Branding ]"}</p>
       <motion.div
         className="w-full h-content mt-auto flex flex-col"
         initial={{ y: 500, opacity: 0 }}
@@ -54,25 +55,27 @@ export const LoginAccount: FC<LoginAccountProps> = ({ toggleCreate }) => {
         </svg>
 
         <div className="flex flex-col gap-4 bg-white items-center justify-center">
-          <p className="text-2xl font-extrabold px-4 bg-white">Welcome back</p>
+          <p className="text-4xl font-extrabold px-4 bg-white">Welcome back</p>
 
+          <div className="flex flex-col items-center justify-center">
           <EmailLoginForm
             onSubmit={(email: string, password: string) => {
               signInWithEmailPass(email, password);
             }}
           />
-
           <IconButton
             buttonText="Sign in with Google"
-            icon={<FcGoogle />}
+            icon={<FcGoogle className="w-8 h-8" />}
             handleClick={signInWithGoogle}
+            className="w-72 p-2"
           />
+          </div>
 
           <p className="text-bold underline p-2" onClick={toggleCreate}>
             Don't have an account? Sign up here.
           </p>
 
-          <p className="pt-8">Legal text TODO</p>
+          <p className="">Legal text TODO</p>
         </div>
       </motion.div>
     </div>

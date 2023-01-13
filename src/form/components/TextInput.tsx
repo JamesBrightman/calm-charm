@@ -2,7 +2,7 @@ import { FC, InputHTMLAttributes } from "react";
 import { useFormContext } from "react-hook-form";
 
 export interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label?: string;
+  label: string;
   formName: string;
   InputIcon?: JSX.Element;
 }

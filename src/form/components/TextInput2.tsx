@@ -22,6 +22,7 @@ export const TextInput2: FC<TextInputProps> = ({
       <InputLabel htmlFor="outlined-adornment-password">{label}</InputLabel>
       <OutlinedInput
         id="outlined-adornment-password"
+        className="rounded-lg "
         type={props.type}
         endAdornment={
           <InputAdornment position="end">{InputIcon}</InputAdornment>

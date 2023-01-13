@@ -6,6 +6,7 @@ import { TextInput } from "./components/TextInput";
 import { MdLogin } from "react-icons/md";
 import { HiOutlineMail } from "react-icons/hi";
 import { FiLock } from "react-icons/fi";
+import { TextInput2 } from "./components/TextInput2";
 
 export interface EmailLoginFormProps {
   onSubmit: (email: string, password: string) => void;
@@ -33,17 +34,17 @@ export const EmailLoginForm: FC<EmailLoginFormProps> = ({ onSubmit }) => {
         onSubmit={submitEmailLogin}
         className="flex flex-col gap-2 p-4 w-full"
       >
-        <TextInput
+        <TextInput2
           formName="email"
           label="Email"
-          InputIcon={<HiOutlineMail className="w-full h-full" />}
+          InputIcon={<HiOutlineMail />}
           required
         />
 
-        <TextInput
+        <TextInput2
           formName="password"
           label="Password"
-          InputIcon={<FiLock className="w-full h-full" />}
+          InputIcon={<FiLock />}
           required
           type="password"
         />

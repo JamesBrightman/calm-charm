@@ -1,5 +1,6 @@
 import {
   FormControl,
+  FormHelperText,
   IconButton,
   InputAdornment,
   InputLabel,
@@ -17,7 +18,11 @@ export const PasswordInput: FC<PasswordInputProps> = ({
   formName,
   ...props
 }) => {
-  const { register, setValue } = useFormContext();
+  const {
+    register,
+    setValue,
+    formState: { errors },
+  } = useFormContext();
   const [showPass, setShowPass] = useState<boolean>(false);
 
   return (
@@ -47,6 +52,7 @@ export const PasswordInput: FC<PasswordInputProps> = ({
         }}
         {...props}
       />
+      {!!errors[formName] && <FormHelperText error>{"ERROR"}</FormHelperText>}
     </FormControl>
   );
 };

@@ -1,12 +1,12 @@
 import { FC } from "react";
-import { FormProvider, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { IconButton } from "../components/IconButton";
 import { CalmFormProvider } from "./components/CalmFormProvider";
-import { TextInput } from "./components/TextInput";
 import { MdLogin } from "react-icons/md";
 import { HiOutlineMail } from "react-icons/hi";
 import { FiLock } from "react-icons/fi";
-import { TextInput2 } from "./components/TextInput2";
+import { TextInput } from "./components/TextInput";
+import { PasswordInput } from "./components/PasswordInput";
 
 export interface EmailLoginFormProps {
   onSubmit: (email: string, password: string) => void;
@@ -34,23 +34,14 @@ export const EmailLoginForm: FC<EmailLoginFormProps> = ({ onSubmit }) => {
         onSubmit={submitEmailLogin}
         className="flex flex-col gap-2 p-4 w-full"
       >
-        <TextInput2
+        <TextInput
           formName="email"
           label="Email"
-          InputIcon={<HiOutlineMail />}
+          InputIcon={<HiOutlineMail className="w-6 h-6 m-[8px]" />}
           required
         />
-
-        <TextInput2
-          formName="password"
-          label="Password"
-          InputIcon={<FiLock />}
-          required
-          type="password"
-        />
-
+        <PasswordInput formName="login-password" label="Password" />
         <span className="w-full pb-0.5 bg-gray-300 mb-6 mt-2"></span>
-
         <IconButton
           buttonText="Sign In"
           handleClick={() => {}}

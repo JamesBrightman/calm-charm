@@ -14,6 +14,7 @@ export interface TextInputProps extends OutlinedInputProps {
   formName: string;
   InputIcon?: JSX.Element;
   validator?: (val: any) => boolean;
+  validationMessage?: string;
 }
 
 export const TextInput: FC<TextInputProps> = ({
@@ -21,6 +22,8 @@ export const TextInput: FC<TextInputProps> = ({
   formName,
   InputIcon,
   validator,
+  validationMessage,
+  required,
   ...props
 }) => {
   const {
@@ -43,13 +46,20 @@ export const TextInput: FC<TextInputProps> = ({
           <InputAdornment position="end">{InputIcon}</InputAdornment>
         }
         label={label}
-        {...register(formName, { validate: validator })}
+        {...register(formName, {
+          validate: (value) => validator!(value) || validationMessage,
+          required: required || "Field is required",
+        })}
         onChange={(newValue) => {
           setValue(formName, newValue.target.value, { shouldDirty: true });
         }}
         {...props}
       />
-      {!!errors[formName] && <FormHelperText error>{"ERROR"}</FormHelperText>}
+      {!!errors[formName] && (
+        <FormHelperText error>
+          {errors[formName]?.message as string}
+        </FormHelperText>
+      )}
     </FormControl>
   );
 };

@@ -16,6 +16,7 @@ export interface PasswordInputProps extends TextInputProps {}
 export const PasswordInput: FC<PasswordInputProps> = ({
   label,
   formName,
+  required,
   ...props
 }) => {
   const {
@@ -29,6 +30,7 @@ export const PasswordInput: FC<PasswordInputProps> = ({
     <FormControl>
       <InputLabel htmlFor="outlined-adornment-password">{label}</InputLabel>
       <OutlinedInput
+        error={!!errors[formName]}
         id="outlined-adornment-password"
         className="rounded-lg "
         type={showPass ? "text" : "password"}
@@ -45,14 +47,19 @@ export const PasswordInput: FC<PasswordInputProps> = ({
           </InputAdornment>
         }
         label={label}
-        required
-        {...register(formName)}
+        {...register(formName, {
+          required: required || "Password is required",
+        })}
         onChange={(newValue) => {
           setValue(formName, newValue.target.value, { shouldDirty: true });
         }}
         {...props}
       />
-      {!!errors[formName] && <FormHelperText error>{"ERROR"}</FormHelperText>}
+      {!!errors[formName] && (
+        <FormHelperText error>
+          {errors[formName]?.message as string}
+        </FormHelperText>
+      )}
     </FormControl>
   );
 };

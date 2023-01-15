@@ -37,6 +37,11 @@ export const EmailLoginForm: FC<EmailLoginFormProps> = ({ onSubmit }) => {
           label="Email"
           InputIcon={<HiOutlineMail className="w-6 h-6 m-[8px]" />}
           required
+          validator={() => {
+            //TODO - proper validation
+            return true;
+          }}
+          validationMessage="Invalid email address"
         />
         <PasswordInput formName="password" label="Password" />
         <span className="w-full pb-0.5 bg-gray-300 mb-6 mt-2"></span>

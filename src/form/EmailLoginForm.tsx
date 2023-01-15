@@ -7,7 +7,7 @@ import { HiOutlineMail } from "react-icons/hi";
 import { TextInput } from "./components/TextInput";
 import { PasswordInput } from "./components/PasswordInput";
 import { auth } from "../firebase/firebaseInit";
-import { signInWithEmailAndPassword } from "@firebase/auth";
+import { AuthError, signInWithEmailAndPassword } from "@firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 export interface EmailLoginFormProps {}
@@ -28,8 +28,15 @@ export const EmailLoginForm: FC<EmailLoginFormProps> = () => {
       .then((user) => {
         nav("/");
       })
-      .catch((err) => {
+      .catch((err: AuthError) => {
         console.log(JSON.stringify(err));
+        if (err.code === "auth/user-not-found") {
+          console.log("INVALID PASSWORD");
+        } else {
+          if (err.code === "auth/too-many-requests") {
+            console.log("TOO MANY REQUESTS");
+          }
+        }
       });
   };
 

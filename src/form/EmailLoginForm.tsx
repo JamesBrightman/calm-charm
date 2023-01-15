@@ -6,23 +6,31 @@ import { MdLogin } from "react-icons/md";
 import { HiOutlineMail } from "react-icons/hi";
 import { TextInput } from "./components/TextInput";
 import { PasswordInput } from "./components/PasswordInput";
+import { auth } from "../firebase/firebaseInit";
+import { signInWithEmailAndPassword } from "@firebase/auth";
+import { useNavigate } from "react-router-dom";
 
-export interface EmailLoginFormProps {
-  onSubmit: (email: string, password: string) => void;
-}
+export interface EmailLoginFormProps {}
 
 interface EmailLoginFields {
   email: string;
   password: string;
 }
 
-export const EmailLoginForm: FC<EmailLoginFormProps> = ({ onSubmit }) => {
+export const EmailLoginForm: FC<EmailLoginFormProps> = () => {
+  const nav = useNavigate();
   const methods = useForm<EmailLoginFields>({
     shouldFocusError: true,
   });
 
   const submitEmailLogin = (data: EmailLoginFields) => {
-    onSubmit(data.email, data.password);
+    signInWithEmailAndPassword(auth, data.email, data.password)
+      .then((user) => {
+        nav("/");
+      })
+      .catch((err) => {
+        console.log(JSON.stringify(err));
+      });
   };
 
   return (

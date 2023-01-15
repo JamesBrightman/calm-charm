@@ -1,6 +1,5 @@
 import {
   GoogleAuthProvider,
-  signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
 import { FC } from "react";
@@ -27,12 +26,6 @@ export const LoginAccount: FC<LoginAccountProps> = ({ toggleCreate }) => {
     });
   };
 
-  const signInWithEmailPass = (email: string, password: string) => {
-    signInWithEmailAndPassword(auth, email, password).then((user) => {
-      nav("/");
-    });
-  };
-
   return (
     <div className="h-screen flex flex-col flex-1 bg-blue-500">
       <p className="flex items-center justify-center pt-8 text-4xl font-bold text-white">
@@ -48,11 +41,7 @@ export const LoginAccount: FC<LoginAccountProps> = ({ toggleCreate }) => {
         <div className="flex flex-col gap-4 bg-white items-center justify-center">
           <p className="text-4xl font-extrabold px-4 bg-white">Welcome back.</p>
           <div className="flex flex-col items-center justify-center">
-            <EmailLoginForm
-              onSubmit={(email: string, password: string) => {
-                signInWithEmailPass(email, password);
-              }}
-            />
+            <EmailLoginForm />
             <IconButton
               buttonText="Sign in with Google"
               icon={<FcGoogle className="w-8 h-8" />}

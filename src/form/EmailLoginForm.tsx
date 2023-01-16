@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import { IconButton } from "../components/IconButton";
 import { CalmFormProvider } from "./components/CalmFormProvider";
@@ -9,6 +9,7 @@ import { PasswordInput } from "./components/PasswordInput";
 import { auth } from "../firebase/firebaseInit";
 import { AuthError, signInWithEmailAndPassword } from "@firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { ErrorChit } from "../components/ErrorChit";
 
 export interface EmailLoginFormProps {}
 
@@ -18,6 +19,8 @@ interface EmailLoginFields {
 }
 
 export const EmailLoginForm: FC<EmailLoginFormProps> = () => {
+  const [formSubmitError, setFormSubmitError] = useState<string>("");
+
   const nav = useNavigate();
   const methods = useForm<EmailLoginFields>({
     shouldFocusError: true,
@@ -25,16 +28,18 @@ export const EmailLoginForm: FC<EmailLoginFormProps> = () => {
 
   const submitEmailLogin = (data: EmailLoginFields) => {
     signInWithEmailAndPassword(auth, data.email, data.password)
-      .then((user) => {
+      .then(() => {
+        setFormSubmitError("");
         nav("/");
       })
       .catch((err: AuthError) => {
-        console.log(JSON.stringify(err));
-        if (err.code === "auth/user-not-found") {
-          console.log("INVALID PASSWORD");
+        if (err.code === "auth/wrong-password") {
+          setFormSubmitError("Incorrect password.");
         } else {
           if (err.code === "auth/too-many-requests") {
-            console.log("TOO MANY REQUESTS");
+            setFormSubmitError(
+              "Too many failed requests. Please try again soon."
+            );
           }
         }
       });
@@ -45,7 +50,7 @@ export const EmailLoginForm: FC<EmailLoginFormProps> = () => {
       <CalmFormProvider
         methods={methods}
         onSubmit={submitEmailLogin}
-        className="flex flex-col gap-2 p-4 w-full"
+        className="flex flex-col gap-2 p-4 w-full items-center justify-center"
       >
         <TextInput
           formName="email"
@@ -59,6 +64,9 @@ export const EmailLoginForm: FC<EmailLoginFormProps> = () => {
           validationMessage="Invalid email address"
         />
         <PasswordInput formName="password" label="Password" />
+
+        {formSubmitError && <ErrorChit>{formSubmitError}</ErrorChit>}
+
         <span className="w-full pb-0.5 bg-gray-300 mb-6 mt-2"></span>
         <IconButton
           buttonText="Sign In"

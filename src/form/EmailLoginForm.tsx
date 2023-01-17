@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { IconButton } from "../components/IconButton";
 import { CalmFormProvider } from "./components/CalmFormProvider";
@@ -7,9 +7,10 @@ import { HiOutlineMail } from "react-icons/hi";
 import { TextInput } from "./components/TextInput";
 import { PasswordInput } from "./components/PasswordInput";
 import { auth } from "../firebase/firebaseInit";
-import { AuthError, signInWithEmailAndPassword } from "@firebase/auth";
+import { AuthError } from "@firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { ErrorChit } from "../components/ErrorChit";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 
 export interface EmailLoginFormProps {}
 
@@ -26,23 +27,34 @@ export const EmailLoginForm: FC<EmailLoginFormProps> = () => {
     shouldFocusError: true,
   });
 
-  const submitEmailLogin = (data: EmailLoginFields) => {
-    signInWithEmailAndPassword(auth, data.email, data.password)
-      .then(() => {
-        setFormSubmitError("");
-        nav("/");
-      })
-      .catch((err: AuthError) => {
-        if (err.code === "auth/wrong-password") {
-          setFormSubmitError("Incorrect password.");
-        } else {
-          if (err.code === "auth/too-many-requests") {
-            setFormSubmitError(
-              "Too many failed requests. Please try again soon."
-            );
-          }
-        }
-      });
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+
+  useEffect(() => {
+    if (user) {
+      setFormSubmitError("");
+      nav("/");
+    }
+  }, [nav, user]);
+
+  const submitEmailLogin = async (data: EmailLoginFields) => {
+    signInWithEmailAndPassword(data.email, data.password);
+
+    // .then((user) => {
+    //   setFormSubmitError("");
+    //   nav("/");
+    // })
+    // .catch((err: AuthError) => {
+    //   if (err.code === "auth/wrong-password") {
+    //     setFormSubmitError("Incorrect password.");
+    //   } else {
+    //     if (err.code === "auth/too-many-requests") {
+    //       setFormSubmitError(
+    //         "Too many failed requests. Please try again soon."
+    //       );
+    //     }
+    //   }
+    // });
   };
 
   return (
@@ -57,20 +69,18 @@ export const EmailLoginForm: FC<EmailLoginFormProps> = () => {
           label="Email"
           InputIcon={<HiOutlineMail className="w-6 h-6 m-[8px]" />}
           required
-          validator={() => {
-            //TODO - proper validation
-            return true;
-          }}
           validationMessage="Invalid email address"
         />
         <PasswordInput formName="password" label="Password" />
 
-        {formSubmitError && <ErrorChit>{formSubmitError}</ErrorChit>}
+        <ErrorChit>{JSON.stringify(error)}</ErrorChit>
+        <p>{loading ? "loading" : "not loading"}</p>
 
         <span className="w-full pb-0.5 bg-gray-300 mb-6 mt-2"></span>
         <IconButton
           buttonText="Sign In"
           handleClick={() => {}}
+          loading={loading}
           icon={<MdLogin className="w-8 h-8" />}
           type="submit"
           variant="contained"

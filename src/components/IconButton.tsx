@@ -3,12 +3,14 @@ import { FC } from "react";
 
 export interface IconButtonProps extends ButtonProps {
   icon: JSX.Element;
+  loading?: boolean;
   buttonText: string;
   handleClick?: () => void;
 }
 
 export const IconButton: FC<IconButtonProps> = ({
   icon,
+  loading,
   buttonText,
   handleClick,
   className,

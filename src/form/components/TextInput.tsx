@@ -47,7 +47,11 @@ export const TextInput: FC<TextInputProps> = ({
         }
         label={label}
         {...register(formName, {
-          validate: (value) => validator!(value) || validationMessage,
+          validate: (value) => {
+            if (validator) {
+              return validator(value) || validationMessage;
+            }
+          },
           required: required || "Field is required",
         })}
         onChange={(newValue) => {

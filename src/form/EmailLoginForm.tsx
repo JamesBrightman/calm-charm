@@ -7,7 +7,6 @@ import { HiOutlineMail } from "react-icons/hi";
 import { TextInput } from "./components/TextInput";
 import { PasswordInput } from "./components/PasswordInput";
 import { auth } from "../firebase/firebaseInit";
-import { AuthError } from "@firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { ErrorChit } from "../components/ErrorChit";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";

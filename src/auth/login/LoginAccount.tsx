@@ -1,8 +1,4 @@
-import {
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
-import { FC } from "react";
+import { FC, useCallback, useEffect } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 import { IconButton } from "../../components/IconButton";
@@ -11,6 +7,9 @@ import { EmailLoginForm } from "../../form/EmailLoginForm";
 import { motion } from "framer-motion";
 import { HeaderWave } from "../../components/HeaderWave";
 import { InfoChit } from "../../components/InfoChit";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { ErrorChit } from "../../components/ErrorChit";
+import { loginError } from "../../utils/errors/LoginError";
 
 export interface LoginAccountProps {
   toggleCreate: () => void;
@@ -19,12 +18,18 @@ export interface LoginAccountProps {
 export const LoginAccount: FC<LoginAccountProps> = ({ toggleCreate }) => {
   const nav = useNavigate();
 
-  const signInWithGoogle = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider).then((user) => {
+  const [signInWithGoogle, user, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
+
+  const onSuccessfulLogin = useCallback(() => {
+    if (user) {
       nav("/");
-    });
-  };
+    }
+  }, [nav, user]);
+
+  useEffect(() => {
+    onSuccessfulLogin();
+  }, [onSuccessfulLogin]);
 
   return (
     <div className="h-screen flex flex-col flex-1 bg-blue-500">
@@ -45,11 +50,17 @@ export const LoginAccount: FC<LoginAccountProps> = ({ toggleCreate }) => {
             <IconButton
               buttonText="Sign in with Google"
               icon={<FcGoogle className="w-8 h-8" />}
-              handleClick={signInWithGoogle}
+              handleClick={() => {
+                signInWithGoogle();
+              }}
               variant="outlined"
+              loading={googleLoading}
               className="w-72 p-1 font-semibold text-gray-700"
             />
           </div>
+
+          {googleError && <ErrorChit>{loginError(googleError)}</ErrorChit>}
+
           <InfoChit onClick={toggleCreate}>
             <div className="flex flex-row gap-1">
               <p>Don't have an account?</p>

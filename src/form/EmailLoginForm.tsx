@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useState } from "react";
+import { FC, useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { IconButton } from "../components/IconButton";
 import { CalmFormProvider } from "./components/CalmFormProvider";
@@ -25,7 +25,7 @@ export const EmailLoginForm: FC<EmailLoginFormProps> = () => {
     shouldFocusError: true,
   });
 
-  const [signInWithEmailAndPassword, user, loading, error] =
+  const [signInWithEmailAndPassword, user, emailLoading, emailError] =
     useSignInWithEmailAndPassword(auth);
 
   const onSuccessfulLogin = useCallback(() => {
@@ -58,13 +58,13 @@ export const EmailLoginForm: FC<EmailLoginFormProps> = () => {
         />
         <PasswordInput formName="password" label="Password" />
 
-        {error && <ErrorChit>{loginError(error)}</ErrorChit>}
+        {emailError && <ErrorChit>{loginError(emailError)}</ErrorChit>}
 
         <span className="w-full pb-0.5 bg-gray-300 mb-6 mt-2"></span>
         <IconButton
           buttonText="Sign In"
           handleClick={() => {}}
-          loading={loading}
+          loading={emailLoading}
           icon={<MdLogin className="w-8 h-8" />}
           type="submit"
           variant="contained"

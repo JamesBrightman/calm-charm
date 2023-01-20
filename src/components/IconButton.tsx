@@ -1,5 +1,5 @@
 import { LoadingButton } from "@mui/lab";
-import { Button, ButtonProps } from "@mui/material";
+import { ButtonProps } from "@mui/material";
 import { FC } from "react";
 
 export interface IconButtonProps extends ButtonProps {

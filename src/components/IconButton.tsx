@@ -1,3 +1,4 @@
+import { LoadingButton } from "@mui/lab";
 import { Button, ButtonProps } from "@mui/material";
 import { FC } from "react";
 
@@ -17,17 +18,21 @@ export const IconButton: FC<IconButtonProps> = ({
   ...props
 }) => {
   return (
-    <Button
+    <LoadingButton
       className={
         "grid grid-flow-col grid-cols-[50px_1fr] items-center justify-items-center rounded-xl border-2 px-1" +
         " " +
-        className
+        className +
+        " " +
+        `${loading ? "bg-opacity-50 bg-gray-400" : "bg-opacity-100"}`
       }
-      onClick={handleClick}
       {...props}
+      onClick={handleClick}
+      loading={loading}
+      loadingPosition="end"
     >
       {icon}
       <p className="pr-[50px]">{buttonText}</p>
-    </Button>
+    </LoadingButton>
   );
 };

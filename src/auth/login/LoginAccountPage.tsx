@@ -11,11 +11,13 @@ import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { ErrorChit } from "../../components/ErrorChit";
 import { loginError } from "../../utils/errors/LoginError";
 
-export interface LoginAccountProps {
+export interface LoginAccountPageProps {
   toggleCreate: () => void;
 }
 
-export const LoginAccount: FC<LoginAccountProps> = ({ toggleCreate }) => {
+export const LoginAccountPage: FC<LoginAccountPageProps> = ({
+  toggleCreate,
+}) => {
   const nav = useNavigate();
 
   const [signInWithGoogle, user, googleLoading, googleError] =

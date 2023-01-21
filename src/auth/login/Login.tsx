@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { CreateAccount } from "./CreateAccount";
-import { LoginAccount } from "./LoginAccount";
+import { CreateAccountPage } from "./CreateAccountPage";
+import { LoginAccountPage } from "./LoginAccountPage";
 
 export const Login = () => {
   const [showLoginPage, setShowLoginPage] = useState<boolean>(true);
@@ -8,13 +8,13 @@ export const Login = () => {
   return (
     <div className="w-full h-screen flex flex-col bg-blue-500">
       {showLoginPage ? (
-        <LoginAccount
+        <LoginAccountPage
           toggleCreate={() => {
             setShowLoginPage(false);
           }}
         />
       ) : (
-        <CreateAccount
+        <CreateAccountPage
           toggleLogin={() => {
             setShowLoginPage(true);
           }}

@@ -6,11 +6,13 @@ import { motion } from "framer-motion";
 import { HeaderWave } from "../../components/HeaderWave";
 import { InfoChit } from "../../components/InfoChit";
 
-export interface CreateAccountProps {
+export interface CreateAccountPageProps {
   toggleLogin: () => void;
 }
 
-export const CreateAccount: FC<CreateAccountProps> = ({ toggleLogin }) => {
+export const CreateAccountPage: FC<CreateAccountPageProps> = ({
+  toggleLogin,
+}) => {
   return (
     <div className="h-screen flex flex-col flex-1 bg-blue-500">
       <motion.div

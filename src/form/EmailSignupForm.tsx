@@ -30,7 +30,7 @@ export const EmailSignupForm: FC<EmailSignupFormProps> = ({ onSubmit }) => {
     user,
     createUserLoading,
     createUserError,
-  ] = useCreateUserWithEmailAndPassword(auth);
+  ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
   const submitEmailSignup = async (data: EmailSignupFields) => {
     createUserWithEmailAndPassword(data.email, data.password);

@@ -40,9 +40,7 @@ export const EmailSignupForm: FC<EmailSignupFormProps> = ({ onSubmit }) => {
     <div>
       <CalmFormProvider
         methods={methods}
-        onSubmit={(e) => {
-          console.log(e);
-        }}
+        onSubmit={submitEmailSignup}
         className="flex flex-col gap-2 p-4 w-full items-center justify-center"
       >
         <TextInput

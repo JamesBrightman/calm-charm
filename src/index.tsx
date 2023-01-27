@@ -7,11 +7,11 @@ import React from 'react';
 import { StyledEngineProvider } from '@mui/styled-engine';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-	<React.StrictMode>
-		<StyledEngineProvider injectFirst>
-			<App />
-		</StyledEngineProvider>
-	</React.StrictMode>
+  <React.StrictMode>
+    <StyledEngineProvider injectFirst>
+      <App />
+    </StyledEngineProvider>
+  </React.StrictMode>
 );
 
 // If you want your app to work offline and load faster, you can change

@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { CreateAccountPage } from "./CreateAccountPage";
-import { LoginAccountPage } from "./LoginAccountPage";
+import React, { useState } from 'react';
+import { CreateAccountPage } from './CreateAccountPage';
+import { LoginAccountPage } from './LoginAccountPage';
 
 export const Login = () => {
   const [showLoginPage, setShowLoginPage] = useState<boolean>(true);

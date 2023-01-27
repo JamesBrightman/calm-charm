@@ -5,9 +5,9 @@ import {
   InputLabel,
   OutlinedInput,
   OutlinedInputProps,
-} from "@mui/material";
-import { FC } from "react";
-import { useFormContext } from "react-hook-form";
+} from '@mui/material';
+import React, { FC } from 'react';
+import { useFormContext } from 'react-hook-form';
 
 export interface TextInputProps extends OutlinedInputProps {
   label: string;
@@ -52,10 +52,12 @@ export const TextInput: FC<TextInputProps> = ({
               return validator(value) || validationMessage;
             }
           },
-          required: required || "Field is required",
+          required: required || 'Field is required',
         })}
         onChange={(newValue) => {
-          setValue(formName, newValue.target.value, { shouldDirty: true });
+          setValue(formName, newValue.target.value, {
+            shouldDirty: true,
+          });
         }}
         {...props}
       />

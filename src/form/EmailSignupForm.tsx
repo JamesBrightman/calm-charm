@@ -1,15 +1,15 @@
-import { useForm } from "react-hook-form";
-import { FC } from "react";
-import { PasswordInput } from "./components/PasswordInput";
-import { CalmFormProvider } from "./components/CalmFormProvider";
-import { TextInput } from "./components/TextInput";
-import { HiOutlineMail } from "react-icons/hi";
-import { IconButton } from "../components/IconButton";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { auth } from "../firebase/firebaseInit";
-import { SignupError } from "../utils/errors/SignupError";
-import { ErrorChit } from "../components/ErrorChit";
-import { BsFillPersonFill } from "react-icons/bs";
+import { useForm } from 'react-hook-form';
+import React, { FC } from 'react';
+import { PasswordInput } from './components/PasswordInput';
+import { CalmFormProvider } from './components/CalmFormProvider';
+import { TextInput } from './components/TextInput';
+import { HiOutlineMail } from 'react-icons/hi';
+import { IconButton } from '../components/IconButton';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { auth } from '../firebase/firebaseInit';
+import { SignupError } from '../utils/errors/SignupError';
+import { ErrorChit } from '../components/ErrorChit';
+import { BsFillPersonFill } from 'react-icons/bs';
 
 export interface EmailSignupFormProps {
   onSubmit: () => void;
@@ -30,7 +30,9 @@ export const EmailSignupForm: FC<EmailSignupFormProps> = ({ onSubmit }) => {
     user,
     createUserLoading,
     createUserError,
-  ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  ] = useCreateUserWithEmailAndPassword(auth, {
+    sendEmailVerification: true,
+  });
 
   const submitEmailSignup = async (data: EmailSignupFields) => {
     createUserWithEmailAndPassword(data.email, data.password);

@@ -1,16 +1,16 @@
-import { FC, useCallback, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { IconButton } from "../components/IconButton";
-import { CalmFormProvider } from "./components/CalmFormProvider";
-import { MdLogin } from "react-icons/md";
-import { HiOutlineMail } from "react-icons/hi";
-import { TextInput } from "./components/TextInput";
-import { PasswordInput } from "./components/PasswordInput";
-import { auth } from "../firebase/firebaseInit";
-import { useNavigate } from "react-router-dom";
-import { ErrorChit } from "../components/ErrorChit";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { loginError } from "../utils/errors/LoginError";
+import React, { FC, useCallback, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { IconButton } from '../components/IconButton';
+import { CalmFormProvider } from './components/CalmFormProvider';
+import { MdLogin } from 'react-icons/md';
+import { HiOutlineMail } from 'react-icons/hi';
+import { TextInput } from './components/TextInput';
+import { PasswordInput } from './components/PasswordInput';
+import { auth } from '../firebase/firebaseInit';
+import { useNavigate } from 'react-router-dom';
+import { ErrorChit } from '../components/ErrorChit';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { loginError } from '../utils/errors/LoginError';
 
 export interface EmailLoginFormProps {}
 
@@ -30,7 +30,7 @@ export const EmailLoginForm: FC<EmailLoginFormProps> = () => {
 
   const onSuccessfulLogin = useCallback(() => {
     if (user) {
-      nav("/");
+      nav('/');
     }
   }, [nav, user]);
 

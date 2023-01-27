@@ -1,8 +1,8 @@
-import { FC, HTMLAttributes } from "react";
-import { FormProvider, SubmitHandler, UseFormReturn } from "react-hook-form";
+import React, { FC, HTMLAttributes } from 'react';
+import { FormProvider, SubmitHandler, UseFormReturn } from 'react-hook-form';
 
 export interface CalmFormProviderProps
-  extends Omit<HTMLAttributes<HTMLFormElement>, "onSubmit"> {
+  extends Omit<HTMLAttributes<HTMLFormElement>, 'onSubmit'> {
   methods: UseFormReturn<any>;
   onSubmit: SubmitHandler<any>;
 }

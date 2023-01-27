@@ -1,6 +1,6 @@
-import { FC, HTMLAttributes } from "react";
+import React, { FC, HTMLAttributes } from 'react';
 
-export interface InfoChitProps extends HTMLAttributes<HTMLDivElement> {}
+export type InfoChitProps = HTMLAttributes<HTMLDivElement>
 
 export const InfoChit: FC<InfoChitProps> = ({
   children,
@@ -10,8 +10,8 @@ export const InfoChit: FC<InfoChitProps> = ({
   return (
     <div
       className={
-        "flex flex-col gap-1 bg-stone-200 p-2 rounded-lg text-gray-700" +
-        " " +
+        'flex flex-col gap-1 bg-stone-200 p-2 rounded-lg text-gray-700' +
+        ' ' +
         className
       }
       {...props}

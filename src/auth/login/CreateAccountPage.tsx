@@ -1,10 +1,10 @@
-import { IconButton } from "../../components/IconButton";
-import { EmailSignupForm } from "../../form/EmailSignupForm";
-import { FcGoogle } from "react-icons/fc";
-import { FC } from "react";
-import { motion } from "framer-motion";
-import { HeaderWave } from "../../components/HeaderWave";
-import { InfoChit } from "../../components/InfoChit";
+import { IconButton } from '../../components/IconButton';
+import { EmailSignupForm } from '../../form/EmailSignupForm';
+import { FcGoogle } from 'react-icons/fc';
+import React, { FC } from 'react';
+import { motion } from 'framer-motion';
+import { HeaderWave } from '../../components/HeaderWave';
+import { InfoChit } from '../../components/InfoChit';
 
 export interface CreateAccountPageProps {
   toggleLogin: () => void;
@@ -19,7 +19,7 @@ export const CreateAccountPage: FC<CreateAccountPageProps> = ({
         className="w-full h-content mt-auto flex flex-col"
         initial={{ y: 500, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ ease: "easeOut", duration: 0.7 }}
+        transition={{ ease: 'easeOut', duration: 0.7 }}
       >
         <HeaderWave />
         <div className="flex flex-col gap-4 bg-white items-center justify-center">
@@ -28,7 +28,7 @@ export const CreateAccountPage: FC<CreateAccountPageProps> = ({
           </p>
           <EmailSignupForm
             onSubmit={() => {
-              console.log("SUBMITTING");
+              console.log('SUBMITTING');
             }}
           />
           <IconButton

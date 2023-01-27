@@ -1,7 +1,7 @@
-import { Timestamp } from "firebase/firestore"
+import { Timestamp } from 'firebase/firestore';
 
 export type entry = {
-    id?: string,
-    createdAt: Timestamp,
-    rating: number
-  }
+  id?: string;
+  createdAt: Timestamp;
+  rating: number;
+};

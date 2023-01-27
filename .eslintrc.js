@@ -7,7 +7,10 @@ module.exports = {
 	'extends': [
 		'eslint:recommended',
 		'plugin:react/recommended',
-		'plugin:@typescript-eslint/recommended'
+		'plugin:@typescript-eslint/recommended',
+		'plugin:react-hooks/recommended',
+		'plugin:import/recommended',
+		'plugin:import/typescript'
 	],
 	'overrides': [
 	],
@@ -16,13 +19,14 @@ module.exports = {
 		'ecmaFeatures': {
 			'jsx': true
 		},
-		'ecmaVersion': 'latest',
+		'ecmaVersion': '13',
 		'sourceType': 'module'
 	},
 	'plugins': [
 		'react',
 		'@typescript-eslint',
-		'jest'
+		'jest',
+		'check-file'
 	],
 	'rules': {
 		'quotes': [
@@ -32,7 +36,14 @@ module.exports = {
 		'semi': [
 			'warn',
 			'always'
-		]
+		],
+		'@typescript-eslint/no-empty-function': 'warn',
+		'@typescript-eslint/no-empty-interface': 'warn',
+	},
+	'settings': {
+		'react': {
+			'version': 'detect'
+		}
 	},
 	'ignorePatterns': [
 		'public',

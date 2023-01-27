@@ -1,7 +1,7 @@
-import { FC, HTMLAttributes } from "react";
-import { MdError } from "react-icons/md";
+import React, { FC, HTMLAttributes } from 'react';
+import { MdError } from 'react-icons/md';
 
-export interface ErrorChitProps extends HTMLAttributes<HTMLDivElement> {}
+export type ErrorChitProps = HTMLAttributes<HTMLDivElement>
 
 export const ErrorChit: FC<ErrorChitProps> = ({
   children,
@@ -11,8 +11,8 @@ export const ErrorChit: FC<ErrorChitProps> = ({
   return (
     <div
       className={
-        "flex flex-row gap-2 items-center justify-center text-center bg-red-200 p-2 rounded-lg text-black font-semibold" +
-        " " +
+        'flex flex-row gap-2 items-center justify-center text-center bg-red-200 p-2 rounded-lg text-black font-semibold' +
+        ' ' +
         className
       }
       {...props}

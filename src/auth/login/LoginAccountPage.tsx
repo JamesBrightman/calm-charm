@@ -1,15 +1,15 @@
-import { FC, useCallback, useEffect } from "react";
-import { FcGoogle } from "react-icons/fc";
-import { useNavigate } from "react-router-dom";
-import { IconButton } from "../../components/IconButton";
-import { auth } from "../../firebase/firebaseInit";
-import { EmailLoginForm } from "../../form/EmailLoginForm";
-import { motion } from "framer-motion";
-import { HeaderWave } from "../../components/HeaderWave";
-import { InfoChit } from "../../components/InfoChit";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
-import { ErrorChit } from "../../components/ErrorChit";
-import { loginError } from "../../utils/errors/LoginError";
+import React, { FC, useCallback, useEffect } from 'react';
+import { FcGoogle } from 'react-icons/fc';
+import { useNavigate } from 'react-router-dom';
+import { IconButton } from '../../components/IconButton';
+import { auth } from '../../firebase/firebaseInit';
+import { EmailLoginForm } from '../../form/EmailLoginForm';
+import { motion } from 'framer-motion';
+import { HeaderWave } from '../../components/HeaderWave';
+import { InfoChit } from '../../components/InfoChit';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { ErrorChit } from '../../components/ErrorChit';
+import { loginError } from '../../utils/errors/LoginError';
 
 export interface LoginAccountPageProps {
   toggleCreate: () => void;
@@ -25,7 +25,7 @@ export const LoginAccountPage: FC<LoginAccountPageProps> = ({
 
   const onSuccessfulLogin = useCallback(() => {
     if (user) {
-      nav("/");
+      nav('/');
     }
   }, [nav, user]);
 
@@ -36,13 +36,13 @@ export const LoginAccountPage: FC<LoginAccountPageProps> = ({
   return (
     <div className="h-screen flex flex-col flex-1 bg-blue-500">
       <p className="flex items-center justify-center pt-8 text-4xl font-bold text-white">
-        {"[ Branding ]"}
+        {'[ Branding ]'}
       </p>
       <motion.div
         className="w-full h-content mt-auto flex flex-col"
         initial={{ y: 500, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ ease: "easeOut", duration: 0.7 }}
+        transition={{ ease: 'easeOut', duration: 0.7 }}
       >
         <HeaderWave />
         <div className="flex flex-col gap-4 bg-white items-center justify-center">
@@ -65,7 +65,7 @@ export const LoginAccountPage: FC<LoginAccountPageProps> = ({
 
           <InfoChit onClick={toggleCreate}>
             <div className="flex flex-row gap-1">
-              <p>Don't have an account?</p>
+              <p>{'Don\'t have an account?'}</p>
               <p className="underline font-bold">Sign up here.</p>
             </div>
           </InfoChit>

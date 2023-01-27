@@ -65,7 +65,7 @@ export const LoginAccountPage: FC<LoginAccountPageProps> = ({
 
           <InfoChit onClick={toggleCreate}>
             <div className="flex flex-row gap-1">
-              <p>{'Don\'t have an account?'}</p>
+              <p>{"Don't have an account?"}</p>
               <p className="underline font-bold">Sign up here.</p>
             </div>
           </InfoChit>

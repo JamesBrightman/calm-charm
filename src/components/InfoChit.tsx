@@ -1,6 +1,6 @@
 import React, { FC, HTMLAttributes } from 'react';
 
-export type InfoChitProps = HTMLAttributes<HTMLDivElement>
+export type InfoChitProps = HTMLAttributes<HTMLDivElement>;
 
 export const InfoChit: FC<InfoChitProps> = ({
   children,

@@ -4,7 +4,7 @@ const config: CapacitorConfig = {
   appId: 'com.calmcharm.app',
   appName: 'Calm Charm',
   webDir: 'build',
-  bundledWebRuntime: false
+  bundledWebRuntime: false,
 };
 
 export default config;

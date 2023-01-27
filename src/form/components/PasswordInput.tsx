@@ -11,7 +11,7 @@ import { useFormContext } from 'react-hook-form';
 import { TextInputProps } from './TextInput';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
-export type PasswordInputProps = TextInputProps
+export type PasswordInputProps = TextInputProps;
 
 export const PasswordInput: FC<PasswordInputProps> = ({
   label,

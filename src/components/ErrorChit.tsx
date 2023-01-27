@@ -1,7 +1,7 @@
 import React, { FC, HTMLAttributes } from 'react';
 import { MdError } from 'react-icons/md';
 
-export type ErrorChitProps = HTMLAttributes<HTMLDivElement>
+export type ErrorChitProps = HTMLAttributes<HTMLDivElement>;
 
 export const ErrorChit: FC<ErrorChitProps> = ({
   children,

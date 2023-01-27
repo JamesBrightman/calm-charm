@@ -47,6 +47,9 @@ module.exports = {
 	},
 	'ignorePatterns': [
 		'public',
+		'build',
+		'android',
+		'node_modules',
 		'jest.config.js',
 		'README.md',
 		'*.css'	

@@ -25,7 +25,7 @@ module.exports = {
   rules: {
     quotes: ['error', 'single'],
     semi: ['warn', 'always'],
-	'react/no-unescaped-entities': 'warn',
+    'react/no-unescaped-entities': 'warn',
     '@typescript-eslint/no-empty-function': 'warn',
     '@typescript-eslint/no-empty-interface': 'warn',
   },

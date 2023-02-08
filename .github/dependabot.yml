@@ -2,6 +2,6 @@ version: 2
 updates:
   - package-ecosystem: 'npm'
     directory: '/'
-    open-pull-request-limit: 10
+    open-pull-request-limit: 5
     schedule:
       interval: 'daily'

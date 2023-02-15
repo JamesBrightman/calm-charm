@@ -38,7 +38,8 @@
     "format:fix": "npx prettier --write . && npx eslint . --fix",
     "updateDeps": "npm outdated & npm update",
     "prepare": "husky install",
-    "test": "jest"
+    "test": "jest",
+    "test:updateSnaps": "jest -u"
   },
   "browserslist": {
     "production": [

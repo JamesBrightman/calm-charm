@@ -4,7 +4,7 @@ exports[`App component Component matches snapshot 1`] = `
 <body>
   <div>
     <div>
-      abc
+      Loading
     </div>
   </div>
 </body>

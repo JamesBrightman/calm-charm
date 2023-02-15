@@ -10,7 +10,7 @@ describe('App component', () => {
   });
 
   it('Component matches snapshot', () => {
-    const { baseElement } = render(<div>abc</div>);
+    const { baseElement } = render(<App />);
 
     expect(baseElement).toMatchSnapshot();
   });

@@ -10,10 +10,10 @@ import {
 } from 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { db, auth } from './firebase/firebaseInit';
-import { entryConverter } from './firebase/firestore/firestoreDataConverters';
-import { entry } from './firebase/firestore/types';
 import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
+import { entryConverter } from '../../firebase/firestore/firestoreDataConverters';
+import { entry } from '../../firebase/firestore/types';
+import { auth, db } from '../../firebase/firebaseInit';
 
 export const HomePage = () => {
   const [entryData, loading, error] = useCollectionData<entry>(

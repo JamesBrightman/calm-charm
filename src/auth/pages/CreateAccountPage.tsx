@@ -1,9 +1,9 @@
-import { IconButton } from '../../components/IconButton';
-import { EmailSignupForm } from '../../form/EmailSignupForm';
 import { FcGoogle } from 'react-icons/fc';
 import React, { FC } from 'react';
 import { motion } from 'framer-motion';
 import { HeaderWave } from '../../components/HeaderWave';
+import { EmailSignupForm } from '../../form/EmailSignupForm';
+import { IconButton } from '../../components/IconButton';
 import { InfoChit } from '../../components/InfoChit';
 
 export interface CreateAccountPageProps {

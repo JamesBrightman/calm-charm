@@ -1,15 +1,15 @@
 import React, { FC, useCallback, useEffect } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { useNavigate } from 'react-router-dom';
-import { IconButton } from '../../components/IconButton';
-import { auth } from '../../firebase/firebaseInit';
-import { EmailLoginForm } from '../../form/EmailLoginForm';
 import { motion } from 'framer-motion';
-import { HeaderWave } from '../../components/HeaderWave';
-import { InfoChit } from '../../components/InfoChit';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { auth } from '../../firebase/firebaseInit';
+import { HeaderWave } from '../../components/HeaderWave';
+import { EmailLoginForm } from '../../form/EmailLoginForm';
+import { IconButton } from '../../components/IconButton';
 import { ErrorChit } from '../../components/ErrorChit';
 import { loginError } from '../../utils/errors/LoginError';
+import { InfoChit } from '../../components/InfoChit';
 
 export interface LoginAccountPageProps {
   toggleCreate: () => void;

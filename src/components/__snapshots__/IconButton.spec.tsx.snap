@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon Button Component Icon button matches snapshot 1`] = `
+<body>
+  <div>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiLoadingButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiLoadingButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium grid grid-flow-col grid-cols-[50px_1fr] items-center justify-items-center rounded-xl border-2 px-1 undefined bg-opacity-100 css-1tw7cpj-MuiButtonBase-root-MuiButton-root-MuiLoadingButton-root"
+      id=":r1:"
+      tabindex="0"
+      type="button"
+    >
+      <div>
+        Test Icon
+      </div>
+      <p
+        class="pr-[50px]"
+      >
+        Foo
+      </p>
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+</body>
+`;

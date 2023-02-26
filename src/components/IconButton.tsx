@@ -4,8 +4,8 @@ import React, { FC } from 'react';
 
 export interface IconButtonProps extends ButtonProps {
   icon: JSX.Element;
-  loading?: boolean;
   buttonText: string;
+  loading?: boolean;
   handleClick?: () => void;
 }
 

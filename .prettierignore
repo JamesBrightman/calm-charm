@@ -4,3 +4,4 @@ android
 build
 node_modules
 public
+.github/workflows/ci.yml

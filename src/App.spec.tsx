@@ -4,13 +4,13 @@ import { App } from './App';
 
 describe('App component', () => {
   it('Component renders', () => {
-    const { baseElement } = render(<div>abc</div>);
+    const { baseElement } = render(<App />);
 
     expect(baseElement).toBeTruthy();
   });
 
   it('Component matches snapshot', () => {
-    const { baseElement } = render(<div>abc</div>);
+    const { baseElement } = render(<App />);
 
     expect(baseElement).toMatchSnapshot();
   });

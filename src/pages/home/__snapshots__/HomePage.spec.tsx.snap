@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component Home page matches snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="w-full flex flex-col items-center gap-2"
+    >
+      <div>
+        LOADING
+      </div>
+      <button>
+        Sign In
+      </button>
+      <button>
+        Sign Out
+      </button>
+      <button>
+        Add record
+      </button>
+      <button>
+        Delete top record
+      </button>
+    </div>
+  </div>
+</body>
+`;

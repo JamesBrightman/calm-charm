@@ -1,17 +1,13 @@
 name: Check PR title
-on:
-  pull_request_target:
-    types:
-      - opened
-      - reopened
-      - edited
-      - synchronize
+
+on: pull_request_target
 
 jobs:
-  lint title:
+  lint-title:
     runs-on: ubuntu-latest
     permissions:
       statuses: write
+    if: ${{ github.actor != 'dependabot[bot]'}}
     steps:
       - uses: aslafy-z/conventional-pr-title-action@v3
         env:

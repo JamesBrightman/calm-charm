@@ -10,6 +10,7 @@ import { IconButton } from '../../components/IconButton';
 import { ErrorChit } from '../../components/ErrorChit';
 import { loginError } from '../../utils/errors/LoginError';
 import { InfoChit } from '../../components/InfoChit';
+import { FooterWave } from '../../components/FooterWave';
 
 export interface LoginAccountPageProps {
   toggleCreate: () => void;
@@ -69,8 +70,8 @@ export const LoginAccountPage: FC<LoginAccountPageProps> = ({
               <p className="underline font-bold">Sign up here.</p>
             </div>
           </InfoChit>
-          <p className="">Legal text TODO</p>
         </div>
+        <FooterWave />
       </motion.div>
     </div>
   );

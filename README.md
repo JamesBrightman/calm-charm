@@ -1,4 +1,4 @@
-# calm-charm
+# calm-charm 🌼
 
 Repo for the Calm Charm mobile app
 
@@ -23,9 +23,27 @@ Run `npm run build`
 
 ## Android
 
+This project uses [Capacitor.js](https://capacitorjs.com/) to write and build a cross-platform app from a React Webapp.
+To sync changes to Android studio run -
+`npx cap copy`
+`npx cap syncy`
+`npx cap open android`
+From Android studio it should be possible to run the app on an emulated device, or build an APK to run on a physical device.
+
+## iOS
+
+//TODO if app is popular on Android or makes enough to cover iOS development costs. Capacitor allows us to build for iOS so shouldn't be too tricky.
+
 ## Testing
 
+Ideally every UI component would have a Jest test. The tests must include at least a render + snapshot test, but it's encouraged to include other relevent test cases.
+To run the Jest tests run `npm run test`, or to update snapshots run `npx jest -u`
+
+//TODO - For complex UI interactions we use e2e testing with Cypress. This is yet to be configured.
+
 ## Running
+
+To run the Calm Charm app locally, simply run `npm start`. For running on native iOS/Android devices, see above section in README.
 
 ## Releases
 
